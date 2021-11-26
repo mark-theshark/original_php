@@ -9,41 +9,27 @@
 
 $id = $_GET['id'];
 
-#echo "Id:".$id;
+echo "Id:".$id;
 
+# get sqlite3 db connection
+$db = new SQLite3('./db/test.db');
 
-# database operations
+# execute SQL query
+$results = $db->query("SELECT id, lastname, phone FROM leads WHERE id=$id");
 
-$user="root";
-$password="";
-$database="crm";
+while ($row = $results->fetchArray()) {
 
-$query="SELECT * FROM account WHERE id='$id'";
-
-# mysqli method
-
-$mysqli = new mysqli("localhost",$user,$password,$database);
-
-#echo $query;
-
-$result = $mysqli->query($query);
-
-while($row = mysqli_fetch_array($result))
-  {
-
-  	$name = $row['name'];
+  	$lastname = $row['lastname'];
   	$phone = $row['phone'];
 
 	echo  
 	"<form action=\"helloworld_u2.php\" method=\"post\">
-	Account Name: <input type=\"text\" name=\"name\" value=\"$name\">
+	Last Name: <input type=\"text\" name=\"lastname\" value=\"$lastname\">
 	Telephone: <input type=\"text\" name=\"phone\" value=\"$phone\">
 	<input type=\"hidden\" name=\"id\" value=\"$id\">
 	<br><input type=\"submit\"value=\"Update\"></form><br>
 	";
   }
-
-$mysqli->close();
 
 ?>
 

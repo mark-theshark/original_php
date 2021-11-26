@@ -9,28 +9,18 @@
 
 $id = $_GET['id'];
 
+# get sqlite3 db connection
+$db = new SQLite3('./db/test.db');
 
-# database operations
-
-$user="root";
-$password="";
-$database="crm";
-
-$query="DELETE FROM account WHERE id='$id'";
-
-# mysqli method
-
-$mysqli = new mysqli("localhost",$user,$password,$database);
+$query="DELETE FROM leads WHERE id='$id'";
 
 echo $query;
 
-if ($mysqli->query($query) === TRUE) {
+if ($db->query($query)) {
     header("Location: helloworld.php");
 } else {
 	echo "Delete failed.  <a href=\"helloworld.php\">List</a>";
 }
-
-$mysqli->close();
 
 ?>
 
