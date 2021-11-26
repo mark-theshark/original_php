@@ -9,31 +9,24 @@
 ?>
 
 <?php
-$user="root";
-$password="";
-$database="crm";
 
-# mysqli method
+# get sqlite3 db connection
+$db = new SQLite3('./db/test.db');
 
-$query="SELECT * FROM account ORDER BY name";
-$mysqli = new mysqli("localhost",$user,$password,$database);
+# execute SQL query
+$results = $db->query('SELECT id, lastname, phone FROM leads');
 
-echo "<b>Accounts</b><br>";
+echo "<b>Leads</b><br>";
 
-$result = $mysqli->query($query);
+while ($row = $results->fetchArray()) {
 
-while($row = mysqli_fetch_array($result))
-  {
-
-  	$name = $row['name'];
+	$id = $row['id'];
+  	$name = $row['lastname'];
   	$phone = $row['phone'];
-  	$id = $row['id'];
 
 	echo "$name - $phone  <a href=\"helloworld_d.php?id=$id\">del</a> <a href=\"helloworld_u.php?id=$id\">u</a> <br>";
 
   }
-
-$mysqli->close();
 
 ?>
 

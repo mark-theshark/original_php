@@ -7,40 +7,27 @@
 
 # retrieve data from POST
 
-$name = $_POST['name'];
+$lastname = $_POST['lastname'];
 $phone = $_POST['phone'];
 $id = $_POST['id'];
 
-echo $name;
+echo $lastname;
 echo $phone;
 echo $id;
 
-# database operations
+# get sqlite3 db connection
+$db = new SQLite3('./db/test.db');
 
-$user="root";
-$password="";
-$database="crm";
+# execute SQL query
+$query="UPDATE leads SET lastname='$lastname', phone='$phone' WHERE id=$id";
 
-$query="UPDATE account SET name='$name', phone='$phone' WHERE id='$id'";
+#echo $results;
 
-# mysqli method
-
-$mysqli = new mysqli("localhost",$user,$password,$database);
-
-#echo $query;
-
-#$result = $mysqli->query($query);
-
-
-
-if ($mysqli->query($query) === TRUE) {
-    #header("Location: helloworld.php");
+if ($db->query($query)) {
     header("Location: helloworld.php");
 } else {
 	echo "Update failed.  <a href=\"helloworld_u.php?id=$id\">Update</a>";
 }
-
-$mysqli->close();
 
 ?>
 

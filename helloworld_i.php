@@ -7,57 +7,25 @@
 
 # retrieve data from POST
 
-$name = $_POST['name'];
+$lastname = $_POST['lastname'];
 $phone = $_POST['phone'];
 
-echo $name.$phone;
+echo $lastname.$phone;
 
+# get sqlite3 db connection
+$db = new SQLite3('./db/test.db');
 
-# database operations
+# execute SQL query
 
-$user="root";
-$password="";
-$database="crm";
-
-$query="INSERT INTO account (id,name,phone)  VALUES ('','$name','$phone')";
-
-# mysqli method
-
-$mysqli = new mysqli("localhost",$user,$password,$database);
+$query="INSERT INTO leads (id,lastname,phone)  VALUES (NULL,'$lastname','$phone')";
 
 echo $query;
 
-if ($mysqli->query($query) === TRUE) {
+if ($db->query($query)) {
     header("Location: helloworld.php");
 } else {
 	echo "Insert failed.  <a href=\"helloworld_i.html\">Add</a>";
 }
-
-$mysqli->close();
-
-
-
-# mysql method
-
-/*
-
-mysql_connect("localhost",$user,$password);
-mysql_select_db($database) or die( "Unable to select database");
-
-
-echo $query;
-$result = mysql_query($query);
-
-echo $result;
-if($result){
-	    echo "<br>Create Account: $name -- succeeded.";
-	} else{
-	    echo "<br>Input data is fail";
-	}
-
-mysql_close();
-
-*/
 
 ?>
 
