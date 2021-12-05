@@ -33,6 +33,9 @@ echo "<p><b>the sqlite3 db call worked</b></p>";
 
 ?>
 
+<p>
+<a href="helloworld.php">click to show list of contacts</a>
+</p>
 
 
 
