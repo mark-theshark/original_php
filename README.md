@@ -1,12 +1,5 @@
-# A simple database-driven PHP ap
+# A simple database-driven PHP app
 ###### This repo needs a PHP interpreter, a VS Code PHP XDebug debugging extension
-
-
-###### clean.demo.coder.com (as a Coder template)
-[![Open in Coder](https://cdn.coder.com/embed-button.svg)](https://clean.demo.coder.com/wac/build?template_oauth_service=github&template_url=git@github.com:mtm20176/php_wac.git&template_ref=main&template_filepath=.coder/coder.yaml)
-
-###### mark.coder.com 
-[![Open in Coder](https://cdn.coder.com/embed-button.svg)](https://mark.coder.com/wac/build?template_oauth_service=github&template_url=git@github.com:mtm20176/php_wac.git&template_ref=main&template_filepath=.coder/coder.yaml)
 
 
 ###### Things you need to  do:
